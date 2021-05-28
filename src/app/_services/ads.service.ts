@@ -81,6 +81,10 @@ export class AdsService {
     document.addEventListener('admob.rewarded.dismiss', () => {
       console.log('Dismiss 3');
     });
+    /* *** CODE 3 END *** */
+
+    /* *** CODE 4 START */
+    // THIS PART IS WORKING ON ANDROID BUT NOT ON IOS!!
     document.addEventListener('rewarded.reward', (reward) => {
       console.log('Reward 4');
       console.log(JSON.stringify(reward));
@@ -88,6 +92,6 @@ export class AdsService {
     document.addEventListener('rewarded.dismiss', () => {
       console.log('Dismiss 4');
     });
-    /* *** CODE 3 END *** */
+    /* *** CODE 4 END */
   }
 }
