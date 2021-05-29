@@ -85,11 +85,11 @@ export class AdsService {
 
     /* *** CODE 4 START */
     // THIS PART IS WORKING ON ANDROID BUT NOT ON IOS!!
-    document.addEventListener('rewarded.reward', (reward) => {
+    AdMobPlus.addListener('rewarded.reward', (reward) => {
       console.log('Reward 4');
       console.log(JSON.stringify(reward));
     });
-    document.addEventListener('rewarded.dismiss', () => {
+    AdMobPlus.addListener('rewarded.dismiss', () => {
       console.log('Dismiss 4');
     });
     /* *** CODE 4 END */
