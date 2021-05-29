@@ -25,18 +25,13 @@ export class AdsService {
     await AdMobPlus.start();
     // Load VideoRewardsAd
     await this.loadVideoRewardsAd();
+    // Load Listener for RewardAds
     this.initListener();
   }
 
   public async showVideoRewardsAd(): Promise<void> {
     // Display rewarded
     await this.rewarded.show();
-
-    // Trying to get rewared from RewaredAd
-    // Error: Property 'reward' does not exist on type 'RewardedAd'
-    /* *** CODE 2 START ***
-    const test = this.rewarded.reward;
-    *** CODE 2 END *** */
   }
 
   private async loadVideoRewardsAd(): Promise<void> {
@@ -49,49 +44,14 @@ export class AdsService {
   }
 
   private initListener() {
-    // Trying to get reward with AdMobPlus.addEventListener
-    // Error: Property 'addEventListener' does not exist on type 'AdMobPlusPlugin'.
-    /* *** CODE 1 START ***
-    AdMobPlus.addEventListener('rewarded.reward', (reward) => {
-      console.log(reward);
-    });
-    *** CODE 1 END *** */
-
-    // Trying different types of document.addEventListener
-    // None of this is fired
-    /* *** CODE 3 START *** */
-    document.addEventListener('AdMobPlus.rewared.reward', (reward) => {
-      console.log('Reward 1');
-      console.log(reward);
-    });
-    document.addEventListener('AdMobPlus.rewared.dismiss', () => {
-      console.log('Dismiss 1');
-    });
-    document.addEventListener('admobplus.rewared.reward', (reward) => {
-      console.log('Reward 2');
-      console.log(reward);
-    });
-    document.addEventListener('admobplus.rewared.dismiss', () => {
-      console.log('Dismiss 2');
-    });
-    document.addEventListener('admob.rewarded.reward', (reward) => {
-      console.log('Reward 3');
-      console.log(reward);
-    });
-    document.addEventListener('admob.rewarded.dismiss', () => {
-      console.log('Dismiss 3');
-    });
-    /* *** CODE 3 END *** */
-
-    /* *** CODE 4 START */
-    // THIS PART IS WORKING ON ANDROID BUT NOT ON IOS!!
+    // Get reward
     AdMobPlus.addListener('rewarded.reward', (reward) => {
-      console.log('Reward 4');
-      console.log(JSON.stringify(reward));
+      console.log('Reward');
+      console.log(reward);
     });
+    // Get dismiss
     AdMobPlus.addListener('rewarded.dismiss', () => {
-      console.log('Dismiss 4');
+      console.log('Dismiss');
     });
-    /* *** CODE 4 END */
   }
 }
